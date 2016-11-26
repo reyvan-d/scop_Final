@@ -35,7 +35,7 @@ static char	determine_set(char *str)
 	return (result);
 }
 
-static void	store_f_piece(t_face *face, char pos, char type, float num)
+static void	store_f_piece(t_face *face, char pos, char type, int num)
 {
 	if (pos == 1 && type == 1)
 		face->x = num;
@@ -64,15 +64,15 @@ static void	store_f_part(t_face *face, char *part, char pos)
 	sub_parts = ft_strsplit(part, '/');
 	if ((F_VERTEX & face->set) && sub_parts[0] != NULL)
 	{
-		store_f_piece(face, pos, 1, atof(sub_parts[0]));
+		store_f_piece(face, pos, 1, atoi(sub_parts[0]));
 		if ((F_TEXTURE & face->set) && sub_parts[1] != NULL)
 		{
-			store_f_piece(face, pos, 2, atof(sub_parts[1]));
+			store_f_piece(face, pos, 2, atoi(sub_parts[1]));
 			if ((F_NORMAL & face->set) && sub_parts[2] != NULL)
-				store_f_piece(face, pos, 3, atof(sub_parts[2]));
+				store_f_piece(face, pos, 3, atoi(sub_parts[2]));
 		}
 		else if ((F_NORMAL & face->set) && sub_parts[1])
-			store_f_piece(face, pos, 3, atof(sub_parts[1]));
+			store_f_piece(face, pos, 3, atoi(sub_parts[1]));
 	}
 	else
 		error_quit("Error: unsupported format. A face must contain vertexes");

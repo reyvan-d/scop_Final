@@ -101,16 +101,16 @@ typedef struct		s_vertex2
 typedef struct		s_face
 {
 	char			type;
-	float			x;
-	float			y;
-	float			z;
-	float			w;
-	float			t_x;
-	float			t_y;
-	float			t_z;
-	float			n_x;
-	float			n_y;
-	float			n_z;
+	int				x;
+	int				y;
+	int				z;
+	int				w;
+	int				t_x;
+	int				t_y;
+	int				t_z;
+	int				n_x;
+	int				n_y;
+	int				n_z;
 	char			set;
 }					t_face;
 
