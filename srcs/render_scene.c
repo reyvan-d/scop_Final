@@ -81,7 +81,10 @@ void	computeDir(float g_deltaAngle)
 }
 
 void	render_scene(void)
-{	
+{
+	t_list		*k;
+	t_face		*face;
+	char		tmp;
 	if (g_deltaMove)
 		computePos(g_deltaMove);
 	if (g_deltaAngle)
@@ -91,6 +94,23 @@ void	render_scene(void)
 	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
 	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 	glColor3f(0.9f, 0.9f, 0.9f);
+	glRotatef(5 , 0, 5, 0);
+	k = g_lst;
+	while (k != NULL)
+	{
+		if (k->content)
+			ft_memcpy(&tmp, k->content, 1);
+		if (tmp == TYPE_FACE)
+		{
+			face = (t_face *)k->content;
+			glBegin(GL_TRIANGLES);
+			glVertex3f(g_vertecies[face->x - 1]->x, g_vertecies[face->x - 1]->y, g_vertecies[face->x - 1]->z);
+			glVertex3f(g_vertecies[face->y - 1]->x, g_vertecies[face->y - 1]->y, g_vertecies[face->y - 1]->z);
+			glVertex3f(g_vertecies[face->z - 1]->x, g_vertecies[face->z - 1]->y, g_vertecies[face->z - 1]->z);
+			glEnd();
+		}
+		k = k->next;
+	}
 	/*glBegin(GL_QUADS);
 		glVertex3f(-100.0f, 0.0f, -100.0f);
 		glVertex3f(-100.0f, 0.0f,  100.0f);
@@ -99,9 +119,8 @@ void	render_scene(void)
 	glEnd();
 	draw_snowman();
 	//glutSwapBuffers();*/
-	glRotatef(g_angle, 0.0f, 1.0f, 0.0f);
 	glColor3f(g_red, g_green, g_blue);
-	render_vertex();
-	g_angle += 0.1f;
+//	render_vertex();
+	g_angle += 0.5f;
 	glutSwapBuffers();
 }
