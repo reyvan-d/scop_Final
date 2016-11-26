@@ -12,9 +12,14 @@
 
 #include "../includes/scop.h"
 
+/*
+** NB! pos 0 is the number of vertecies.
+** g_vertecies[index]->x
+*/
+
 void	set_vertix_arr(void)
 {
-	/*int		k;
+	int		k;
 	t_list	*pos;
 	char	tmp;
 
@@ -22,14 +27,15 @@ void	set_vertix_arr(void)
 		error_quit("Error: no vertecies found.");
 	if (!(g_vertecies = (t_vertex **)malloc(sizeof(t_vertex *) * (k + 2))))
 		error_quit("Error: failed to malloc memory for vertex array.");
-	ft_bzero(&g_vertecies, sizeof(t_vertex *) * (k + 2));
-	k = -1;
+	ft_bzero(g_vertecies, sizeof(t_vertex *) * (k + 2));
+	g_vertecies[0] = (t_vertex *)k;
+	k = 0;
 	pos = g_lst;
 	while (pos != NULL)
 	{
 		ft_memcpy(&tmp, pos->content, 1);
 		if (tmp == TYPE_VERTEX)
-			g_vertecies[++k] = (t_vertex *)&(pos->content);
+			g_vertecies[++k] = (t_vertex *)(pos->content);
 		pos = pos->next;
-	}*/
+	}
 }

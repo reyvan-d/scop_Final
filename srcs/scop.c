@@ -16,7 +16,7 @@
 int		main(int ac, char **av)
 {
 	read_obj(ac, av);//incomplete
-	print_list(g_lst);//debug
+	//print_list(g_lst);//debug
 	set_vertix_arr();
 	glutInit(&ac, av);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
