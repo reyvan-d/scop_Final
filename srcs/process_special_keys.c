@@ -57,3 +57,48 @@ void	process_special_keys(int key, int x, int y)
 		g_z -= g_lz * fraction;
 	}
 }
+
+void pressKey(int key, int xx, int yy)
+{
+	printf("key : %i\n",key);
+	if (key == GLUT_KEY_LEFT)
+		g_deltaAngle += -0.1f;
+	else if (key == GLUT_KEY_RIGHT)
+		g_deltaAngle += 0.1f;
+	else if (key == GLUT_KEY_UP)
+		g_deltaMove += 0.5f;
+	else if (key == GLUT_KEY_DOWN)
+		g_deltaMove += -0.5f;
+}
+
+void releaseKey(int key, int x, int y)
+{
+	if (key == GLUT_KEY_LEFT)
+		g_deltaAngle += -0.1f;
+	else if (key == GLUT_KEY_RIGHT)
+		g_deltaAngle += 0.1f;
+	else if (key == GLUT_KEY_UP)
+		g_deltaMove += 0.5f;
+	else if (key == GLUT_KEY_DOWN)
+		g_deltaMove += -0.5f;
+}
+
+/*void pressKey(int key, int xx, int yy) {
+
+	switch (key) {
+		case GLUT_KEY_LEFT : g_deltaAngle = -0.01f; break;
+		case GLUT_KEY_RIGHT : g_deltaAngle = 0.01f; break;
+		case GLUT_KEY_UP : g_deltaMove = 0.5f; break;
+		case GLUT_KEY_DOWN : g_deltaMove = -0.5f; break;
+	}
+}
+
+void releaseKey(int key, int x, int y) {
+
+	switch (key) {
+		case GLUT_KEY_LEFT :
+		case GLUT_KEY_RIGHT : g_deltaAngle = 0.0f;break;
+		case GLUT_KEY_UP :
+		case GLUT_KEY_DOWN : g_deltaMove = 0;break;
+	}
+}*/

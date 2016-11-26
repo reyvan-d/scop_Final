@@ -82,10 +82,10 @@ void	computeDir(float g_deltaAngle)
 
 void	render_scene(void)
 {	
-	/*if (g_deltaMove)
+	if (g_deltaMove)
 		computePos(g_deltaMove);
 	if (g_deltaAngle)
-		computeDir(g_deltaAngle);*/
+		computeDir(g_deltaAngle);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Color and Depth Buffers
 	glLoadIdentity(); // Reset transformations
 	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera

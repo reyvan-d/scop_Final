@@ -259,6 +259,8 @@ void				process_normal_keys(unsigned char key, int x, int y);
 ** process_special_keys.c
 */
 void				process_special_keys(int key, int x, int y);
+void				pressKey(int key, int xx, int yy);
+void				releaseKey(int key, int x, int y);
 /*
 ** read_obj.c
 */
