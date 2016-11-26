@@ -150,7 +150,7 @@ float				g_deltaAngle = 0.0f;
 float				g_deltaMove = 0;
 t_list				*g_lst = NULL;
 t_vertex			**g_vertecies = NULL;
-t_vertex			**g_normals = NULL;
+t_vertex			*g_normals = NULL;
 # else
 
 extern float		g_red;
@@ -165,7 +165,7 @@ extern float		g_deltaAngle;
 extern float		g_deltaMove;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
-extern t_vertex		**g_normals = NULL;
+extern t_vertex		*g_normals;
 # endif
 
 /*
@@ -238,6 +238,10 @@ t_matrix			matrix_sub(t_matrix first, t_matrix second);
 ** matrix_transpose.c
 */
 t_matrix			matrix_transpose(t_matrix source);
+/*
+** normalise.c
+*/
+void				normalise(void);
 /*
 ** print_list.c
 */
