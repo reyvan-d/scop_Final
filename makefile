@@ -29,4 +29,4 @@ SRC=	includes/scop.h						\
 		./libft/libft.a
 
 a:
-	gcc $(SRC) -lGLU -lGL -lglut -lXmu -lXext -lX11 -lm
+	gcc $(SRC) -lGLU -lGL -lglut -lXext -lX11 -lm #-lXmu
