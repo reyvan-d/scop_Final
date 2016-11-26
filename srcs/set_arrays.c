@@ -28,8 +28,8 @@ void	set_vertix_arr(void)
 	if (!(g_vertecies = (t_vertex **)malloc(sizeof(t_vertex *) * (k + 2))))
 		error_quit("Error: failed to malloc memory for vertex array.");
 	ft_bzero(g_vertecies, sizeof(t_vertex *) * (k + 2));
-	g_vertecies[0] = (t_vertex *)k;
-	k = 0;
+	g_num_vertex = k;
+	k = -1;
 	pos = g_lst;
 	while (pos != NULL)
 	{

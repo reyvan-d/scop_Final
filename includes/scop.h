@@ -150,6 +150,7 @@ float				g_deltaAngle = 0.0f;
 float				g_deltaMove = 0;
 t_list				*g_lst = NULL;
 t_vertex			**g_vertecies = NULL;
+int					g_num_vertex = 0;
 t_vertex			*g_normals = NULL;
 # else
 
@@ -165,11 +166,12 @@ extern float		g_deltaAngle;
 extern float		g_deltaMove;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
+int					g_num_vertex;
 extern t_vertex		*g_normals;
 # endif
 
 /*
-** ----------\
+** ----------\s
 ** Prototypes |
 ** ----------/
 */
