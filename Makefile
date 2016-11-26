@@ -12,6 +12,7 @@ SRC=	includes/scop.h						\
 			srcs/matrix_multiply.c			\
 			srcs/matrix_sub.c				\
 			srcs/matrix_transpose.c			\
+			srcs/normalise.c			\
 			srcs/print_list.c				\
 			srcs/process_normal_keys.c 		\
 			srcs/process_special_keys.c 		\
