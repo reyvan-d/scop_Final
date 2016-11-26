@@ -44,6 +44,8 @@ int			read_obj(int ac, char **av)
 			find_vertex_func(line, &pos);
 		else if (*line == 'f')
 			store_face(line, &pos);
+		else if (*line == 'm' && ft_strstr(line, "mtllib") && !g_mtl_file)
+			g_mtl_file = ft_strdup(line);
 		free(line);
 	}
 	return (1);

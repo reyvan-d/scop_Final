@@ -152,6 +152,7 @@ t_list				*g_lst = NULL;
 t_vertex			**g_vertecies = NULL;
 int					g_num_vertex = 0;
 t_vertex			*g_normals = NULL;
+char				*g_mtl_file = NULL;
 # else
 
 extern float		g_red;
@@ -166,8 +167,9 @@ extern float		g_deltaAngle;
 extern float		g_deltaMove;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
-extern int					g_num_vertex;
+extern int			g_num_vertex;
 extern t_vertex		*g_normals;
+extern char			*g_mtl_file;
 # endif
 
 /*

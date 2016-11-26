@@ -94,7 +94,7 @@ void	render_scene(void)
 	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
 	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 	glColor3f(0.9f, 0.9f, 0.9f);
-	glRotatef(5 , 0, 5, 0);
+	glRotatef(g_angle , 1, 4, 2);
 	k = g_lst;
 	while (k != NULL)
 	{
