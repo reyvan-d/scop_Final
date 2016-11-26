@@ -166,7 +166,7 @@ extern float		g_deltaAngle;
 extern float		g_deltaMove;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
-int					g_num_vertex;
+extern int					g_num_vertex;
 extern t_vertex		*g_normals;
 # endif
 
