@@ -62,7 +62,6 @@ void pressKey(int key, int xx, int yy)
 {
 	(void)xx;
 	(void)yy;
-	printf("key : %i\n",key);
 	if (key == GLUT_KEY_LEFT)
 		g_deltaAngle += -0.1f;
 	else if (key == GLUT_KEY_RIGHT)
