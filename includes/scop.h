@@ -204,9 +204,9 @@ typedef struct		s_mat_mul
 
 # ifdef MAIN_FILE
 
-float				g_red = 1.0;
-float				g_blue = 1.0;
-float				g_green = 1.0;
+float				g_red = 0.0;
+float				g_blue = 0.0;
+float				g_green = 0.0;
 float				g_angle = 0;
 float				g_lx = 0.0f;
 float				g_lz = -1.0f;
