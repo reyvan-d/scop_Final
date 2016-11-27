@@ -177,7 +177,7 @@ extern char			*g_mtl_file;
 ** Prototypes |
 ** ----------/
 */
-
+void	initGL(void);
 /*
 ** change_size.c
 */
@@ -246,6 +246,7 @@ t_matrix			matrix_transpose(t_matrix source);
 ** normalise.c
 */
 void				normalise(void);
+t_vertex    			normalise_point(t_vertex *p1, t_vertex *p2, t_vertex *p3);
 /*
 ** print_list.c
 */

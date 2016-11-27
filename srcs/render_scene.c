@@ -12,6 +12,9 @@
 
 #include "../includes/scop.h"
 
+GLfloat light_diffuse[] = {6.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */
+GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};  /* Infinite light location. */
+
 void	render_vertex(void)
 {
 	t_list			*list;
@@ -84,7 +87,10 @@ void	render_scene(void)
 {
 	t_list		*k;
 	t_face		*face;
+	t_vertex	normal;
+	int			q = 0;
 	char		tmp;
+
 	if (g_deltaMove)
 		computePos(g_deltaMove);
 	if (g_deltaAngle)
@@ -93,7 +99,8 @@ void	render_scene(void)
 	glLoadIdentity(); // Reset transformations
 	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
 	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-	glColor3f(0.9f, 0.9f, 0.9f);
+//	glColor3f(0.9f, 0.9f, 0.9f);
+	glColor3f(g_red, g_blue, g_green);
 	glRotatef(g_angle , 1, 4, 2);
 	k = g_lst;
 	while (k != NULL)
@@ -104,12 +111,15 @@ void	render_scene(void)
 		{
 			face = (t_face *)k->content;
 			glBegin(GL_TRIANGLES);
+			normal = normalise_point(g_vertecies[face->x - 1], g_vertecies[face->y - 1], g_vertecies[face->z - 1]);
+			glNormal3f(normal.x, normal.y, normal.z);
 			glVertex3f(g_vertecies[face->x - 1]->x, g_vertecies[face->x - 1]->y, g_vertecies[face->x - 1]->z);
 			glVertex3f(g_vertecies[face->y - 1]->x, g_vertecies[face->y - 1]->y, g_vertecies[face->y - 1]->z);
 			glVertex3f(g_vertecies[face->z - 1]->x, g_vertecies[face->z - 1]->y, g_vertecies[face->z - 1]->z);
 			glEnd();
 		}
 		k = k->next;
+		q++;
 	}
 	/*glBegin(GL_QUADS);
 		glVertex3f(-100.0f, 0.0f, -100.0f);
@@ -119,8 +129,18 @@ void	render_scene(void)
 	glEnd();
 	draw_snowman();
 	//glutSwapBuffers();*/
-	glColor3f(g_red, g_green, g_blue);
 //	render_vertex();
 	g_angle += 0.5f;
 	glutSwapBuffers();
+}
+
+void	initGL(void)
+{
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST);  /* Use depth buffering for hidden surface elimination. */
+	glMatrixMode(GL_PROJECTION);  /* Setup the view of the cube. */
+	glMatrixMode(GL_MODELVIEW);
 }

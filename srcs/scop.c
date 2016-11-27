@@ -16,17 +16,18 @@
 int		main(int ac, char **av)
 {
 	read_obj(ac, av);//incomplete
-	//print_list(g_lst);//debug
+	print_list(g_lst);//debug
 	set_vertix_arr();
-	normalise();
+//	normalise();
 	glutInit(&ac, av);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowPosition(200, 200);
 	glutInitWindowSize(640, 640);
 	glutCreateWindow("Scop");
 	glutDisplayFunc(render_scene);
 	glutReshapeFunc(change_size);
 	glutIdleFunc(render_scene);
+	initGL();	
 	glutKeyboardFunc(process_normal_keys);
 	glutSpecialFunc(process_special_keys);
 	glutSpecialFunc(pressKey);
