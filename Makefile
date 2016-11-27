@@ -1,4 +1,5 @@
 SRC=	includes/scop.h						\
+			srcs/centerpoint.c			\
 			srcs/change_size.c 				\
 			srcs/count_elements.c			\
 			srcs/error_quit.c				\
@@ -27,7 +28,7 @@ SRC=	includes/scop.h						\
 			srcs/trim.c						\
 			srcs/vertex_create.c				\
 			srcs/snowman.c					\
-		./libft/libft.a
-
+			./libft/libft.a
+			
 a:
 	gcc $(SRC) -lGLU -lGL -lglut -lXext -lX11 -lm #-lXmu

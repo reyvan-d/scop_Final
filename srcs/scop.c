@@ -19,6 +19,7 @@ int		main(int ac, char **av)
 	//print_list(g_lst);//debug
 	set_vertix_arr();
 	normalise();
+	centerpoint();
 	glutInit(&ac, av);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(200, 200);
