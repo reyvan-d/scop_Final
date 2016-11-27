@@ -60,6 +60,8 @@ void	process_special_keys(int key, int x, int y)
 
 void pressKey(int key, int xx, int yy)
 {
+	(void)xx;
+	(void)yy;
 	printf("key : %i\n",key);
 	if (key == GLUT_KEY_LEFT)
 		g_deltaAngle += -0.1f;
@@ -73,6 +75,8 @@ void pressKey(int key, int xx, int yy)
 
 void releaseKey(int key, int x, int y)
 {
+	(void)x;
+	(void)y;
 	if (key == GLUT_KEY_LEFT)
 		g_deltaAngle += -0.1f;
 	else if (key == GLUT_KEY_RIGHT)

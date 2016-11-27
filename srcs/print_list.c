@@ -62,21 +62,21 @@ void	print_list_details(t_list *pos, unsigned int k)
 		ft_putendl("Error: print_list_details called with a NULL argument");
 		return ;
 	}
-//	printf("List Item [%u]: size: %zu; Has Content: %s, Has next: %s\n",
-//			k, pos->content_size,
-//			((pos->content != NULL) ? "YES" : "NO"),
-//			((pos->next != NULL) ? "YES" : "NO"));
+	printf("List Item [%u]: size: %zu; Has Content: %s, Has next: %s\n",
+			k, pos->content_size,
+			((pos->content != NULL) ? "YES" : "NO"),
+			((pos->next != NULL) ? "YES" : "NO"));
 	if (pos->content_size && pos->content != NULL)
 	{
 		ft_memcpy(&tmp, pos->content, 1);
 		if (tmp == TYPE_VERTEX || tmp == TYPE_NORMAL)
 			print_vetex((t_vertex *)(pos->content));
-		/*else if (tmp == TYPE_FACE)
+		else if (tmp == TYPE_FACE)
 			print_face((t_face *)(pos->content));
 		else if (tmp == TYPE_PSPACE || tmp == TYPE_TEXTURE)
 			print_vertex2((t_vertex2 *)(pos->content));
 		else
-			printf("\tTYPE:\tunknown\n");*/
+			printf("\tTYPE:\tunknown\n");
 	}
 }
 
