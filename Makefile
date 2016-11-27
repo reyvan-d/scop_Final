@@ -52,6 +52,7 @@ SRCS_NAME = centerpoint.c				\
 			term.c						\
 			trim.c						\
 			vertex_create.c				\
+			mousehook.c					\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

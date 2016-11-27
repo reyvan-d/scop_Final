@@ -40,6 +40,8 @@ int		main(int ac, char **av)
 	glutSpecialFunc(process_special_keys);
 	glutSpecialFunc(press_key);
 	glutSpecialUpFunc(release_key);
+	glutMouseFunc(mouse_button);
+	glutMotionFunc(mouse_move);
 	glEnable(GL_DEPTH_TEST);
 	glutMainLoop();
 	return (1);

@@ -222,6 +222,7 @@ char				*g_mtl_file = NULL;
 t_centerpoint		g_centerpoint;
 t_keyhook			g_keyhook;
 t_camera			g_camera;
+int					g_xorigin = -1;
 # else
 
 extern float		g_red;
@@ -242,6 +243,7 @@ extern char			*g_mtl_file;
 extern t_centerpoint	g_centerpoint;
 extern t_keyhook	g_keyhook;
 extern t_camera		g_camera;
+extern int			g_xorigin;
 # endif
 
 /*
@@ -341,6 +343,11 @@ void				process_normal_keys(unsigned char key, int x, int y);
 void				process_special_keys(int key, int x, int y);
 void				press_key(int key, int xx, int yy);
 void				release_key(int key, int x, int y);
+/*
+** mousehook.c
+*/
+void				mouse_button(int button, int state, int x, int y);
+void				mouse_move(int x, int y);
 /*
 ** read_obj.c
 */
