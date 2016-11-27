@@ -111,12 +111,14 @@ void	render_scene(void)
 		if (tmp == TYPE_FACE)
 		{
 			face = (t_face *)k->content;
-			glBegin((g_keyhook.wire) ? GL_TRIANGLES : GL_LINES);
+			glBegin((g_keyhook.wire) ? ((face->w) ? GL_QUADS : GL_TRIANGLES) : GL_LINES);
 			normal = normalise_point(g_vertecies[face->x - 1], g_vertecies[face->y - 1], g_vertecies[face->z - 1]);
 			glNormal3f(normal.x, normal.y, normal.z);
 			glVertex3f(g_vertecies[face->x - 1]->x, g_vertecies[face->x - 1]->y, g_vertecies[face->x - 1]->z);
 			glVertex3f(g_vertecies[face->y - 1]->x, g_vertecies[face->y - 1]->y, g_vertecies[face->y - 1]->z);
 			glVertex3f(g_vertecies[face->z - 1]->x, g_vertecies[face->z - 1]->y, g_vertecies[face->z - 1]->z);
+			if (face->w)
+				glVertex3f(g_vertecies[face->w - 1]->x, g_vertecies[face->w - 1]->y, g_vertecies[face->w - 1]->z);
 			glEnd();
 		}
 		k = k->next;

@@ -55,6 +55,12 @@ static void	store_f_piece(t_face *face, char pos, char type, int num)
 		face->n_y = num;
 	else if (pos == 3 && type == 3)
 		face->n_z = num;
+	else if (pos == 4 && type == 1)
+		face->w = num;
+	else if (pos == 4 && type == 2)
+		face->t_w = num;
+	else if (pos == 4 && type == 3)
+		face->n_w = num;
 }
 
 static void	store_f_part(t_face *face, char *part, char pos)
@@ -93,7 +99,10 @@ void		store_face(char *line, t_list **pos)
 	store_f_part(&face, parts[1], 1);
 	store_f_part(&face, parts[2], 2);
 	store_f_part(&face, parts[3], 3);
-	face.w = (parts[4] != NULL) ? atof(parts[4]) : 1.0f;
+	if (parts[4] != NULL)
+		store_f_part(&face, parts[4], 4);
+	else
+		face.w = 0;
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&face, sizeof(t_face), pos);
 }

@@ -122,9 +122,11 @@ typedef struct		s_face
 	int		t_x;
 	int		t_y;
 	int		t_z;
+	int		t_w;
 	int		n_x;
 	int		n_y;
 	int		n_z;
+	int		n_w;
 	char		set;
 }			t_face;
 
