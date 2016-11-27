@@ -15,10 +15,12 @@
 
 int		main(int ac, char **av)
 {
+	g_keyhook.zoom = 10.0f;
 	read_obj(ac, av);//incomplete
 	print_list(g_lst);//debug
 	set_vertix_arr();
 	g_keyhook.wire = 1;
+//	g_keyhook.ratio = 720.0 * 1.0 / 720.0;
 	centerpoint();
 	glutInit(&ac, av);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);

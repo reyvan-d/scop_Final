@@ -98,7 +98,8 @@ void	render_scene(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Color and Depth Buffers
 	glLoadIdentity(); // Reset transformations
 	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
-	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f);
+//	gluPerspective(g_keyhook.zoom, g_keyhook.ratio, 0.1f, 100.0f);
+	gluLookAt(0.0f, 0.0f, g_keyhook.zoom, 0.0f, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f);
 	//eye, center, up is in positive y direction.
 	glColor3f(g_red, g_blue, g_green);
 	glRotatef(g_angle, g_centerpoint.center.x, g_centerpoint.center.y, g_centerpoint.center.z);

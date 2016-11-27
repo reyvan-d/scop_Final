@@ -36,4 +36,8 @@ void	process_normal_keys(unsigned char key, int x, int y)
 	key == 'd' && (g_centerpoint.center.z -= 1.0);
 	if (key == 'f')
 		g_keyhook.wire = (g_keyhook.wire) ? 0 : 1;
+        key == 'm' && (g_keyhook.zoom -= 1.0);
+        key == 'n' && (g_keyhook.zoom += 1.0);
+
+	//printf("%d\n", key);
 }

@@ -83,6 +83,8 @@
 
 typedef struct		s_keyhook
 {
+	float		zoom;
+	float		ratio;
 	char		wire;
 }			t_keyhook;
 
