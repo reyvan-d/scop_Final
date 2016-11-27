@@ -108,6 +108,9 @@ typedef struct		s_keyhook
 	float			centerx;
 	float			centery;
 	float			centerz;
+	float			up_x;
+	float			up_y;
+	float			up_z;
 }					t_keyhook;
 
 typedef struct		s_vertex

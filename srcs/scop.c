@@ -15,13 +15,10 @@
 
 void	init_globals(void)
 {
+	ft_bzero(&g_keyhook, sizeof(t_keyhook));
 	g_keyhook.zoom = 10.0f;
 	g_keyhook.wire = 1;
-	g_keyhook.eyex = 0.0f;
-	g_keyhook.eyey = 0.0f;
-	g_keyhook.centerx = 0.0f;
-	g_keyhook.centery = 0.0f;
-	g_keyhook.centerz = 0.0f;
+	g_keyhook.up_y = 0.5;
 	centerpoint();
 }
 
