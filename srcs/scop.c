@@ -34,7 +34,7 @@ int		main(int ac, char **av)
 	glutKeyboardFunc(process_normal_keys);
 	glutSpecialFunc(process_special_keys);
 	glutSpecialFunc(pressKey);
-	glutIgnoreKeyRepeat(1);
+	//glutIgnoreKeyRepeat(1);
 	glutSpecialUpFunc(releaseKey);
 	glEnable(GL_DEPTH_TEST);// added for snow men
 	//mlx_hook(env.window->mlx_window, 17, 0L, &close_window, &env);

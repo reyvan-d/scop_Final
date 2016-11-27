@@ -62,7 +62,7 @@ void    normalise(void)
 		g_normals[q].x = g_normals[q].x / temp;
 		g_normals[q].y = g_normals[q].y / temp;
 		g_normals[q].z = g_normals[q].z / temp;
-		printf("normal: %f, %f, %f\n", g_normals[q].x, g_normals[q].y, g_normals[q].z);
+		//printf("normal: %f, %f, %f\n", g_normals[q].x, g_normals[q].y, g_normals[q].z);
         q++;
 		i++;
 		j++;
