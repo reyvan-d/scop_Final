@@ -112,6 +112,19 @@ typedef struct			s_vertex2
 	float			w;
 }				t_vertex2;
 
+typedef struct		s_camera
+{
+	float			eye_x;
+	float			eye_y;
+	float			eye_z;
+	float			center_x;
+	float			center_y;
+	float			center_z;
+	float			up_x;
+	float			up_y;
+	float			up_z;
+}					t_camera;
+
 typedef struct		s_face
 {
 	char		type;
@@ -183,6 +196,7 @@ t_vertex			*g_normals = NULL;
 char				*g_mtl_file = NULL;
 t_centerpoint			g_centerpoint;
 t_keyhook			g_keyhook;
+t_camera			camera;
 # else
 
 extern float		g_red;
@@ -202,6 +216,7 @@ extern t_vertex		*g_normals;
 extern char		*g_mtl_file;
 extern t_centerpoint	g_centerpoint;
 extern t_keyhook	g_keyhook;
+extern t_camera		g_camera;
 # endif
 
 /*
