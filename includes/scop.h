@@ -119,14 +119,26 @@ typedef struct		s_face
 	int		y;
 	int		z;
 	int		w;
+	int		u;
+	int		v;
+	int		o;
+	int		p;
 	int		t_x;
 	int		t_y;
 	int		t_z;
 	int		t_w;
+	int		t_u;
+	int		t_v;
+	int		t_o;
+	int		t_p;
 	int		n_x;
 	int		n_y;
 	int		n_z;
 	int		n_w;
+	int		n_u;
+	int		n_v;
+	int		n_o;
+	int		n_p;
 	char		set;
 }			t_face;
 
