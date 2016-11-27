@@ -31,6 +31,11 @@
 # include <unistd.h>
 # include <math.h>
 # include <libc.h>
+# include <signal.h>
+# include <errno.h>
+# include <ctype.h>
+# include <termios.h>
+# include <term.h>
 
 # include "../libft/includes/libft.h"
 

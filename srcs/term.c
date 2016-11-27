@@ -26,7 +26,7 @@ void	unexpected_error(int signo)
 		tputs(tgetstr((char *)"cr", NULL), 0, cursor_do);
 		ft_putstr("                                                         ");
 		tputs(tgetstr((char *)"cr", NULL), 0, cursor_do);
-		error_quit("\rError: an unlabled error occured.");
+		error_quit("\r\rError: an unlabled error occured.");
 	}
 }
 

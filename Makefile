@@ -49,6 +49,7 @@ SRCS_NAME = centerpoint.c				\
 			scop.c 						\
 			store_face.c				\
 			store_obj.c					\
+			term.c						\
 			trim.c						\
 			vertex_create.c				\
 

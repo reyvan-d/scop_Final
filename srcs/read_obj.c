@@ -30,6 +30,7 @@ int			read_obj(int ac, char **av)
 	char		*line;
 	t_list		*pos;
 
+	listener();
 	if (ac < 2 || !(av[1]))
 		error_quit("Error: please give an object file as the first paramiter.");
 	if ((fd = open(av[1], O_RDONLY)) < 0)
