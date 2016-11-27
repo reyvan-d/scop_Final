@@ -6,7 +6,7 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 09:40:14 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/25 09:40:21 by khansman         ###   ########.fr       */
+/*   Updated: 2016/11/27 11:01:34 by smahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ int		main(int ac, char **av)
 	read_obj(ac, av);//incomplete
 	set_vertix_arr();
 	g_keyhook.wire = 1;
-//	g_keyhook.ratio = 720.0 * 1.0 / 720.0;
+	g_keyhook.eyex = 0.0f;
+	g_keyhook.eyey = 0.0f;
+	g_keyhook.centerx = 0.0f;
+	g_keyhook.centery = 0.0f;
+	g_keyhook.centerz = 0.0f;
+	//	g_keyhook.ratio = 720.0 * 1.0 / 720.0;
 	centerpoint();
 	glutInit(&ac, av);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);

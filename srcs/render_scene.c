@@ -6,7 +6,7 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 09:39:22 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/25 10:21:37 by khansman         ###   ########.fr       */
+/*   Updated: 2016/11/27 10:57:58 by smahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	render_scene(void)
 	glLoadIdentity(); // Reset transformations
 	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
 //	gluPerspective(g_keyhook.zoom, g_keyhook.ratio, 0.1f, 100.0f);
-	gluLookAt(0.0f, 0.0f, g_keyhook.zoom, 0.0f, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f);
+	gluLookAt(g_keyhook.eyex, g_keyhook.eyey, g_keyhook.zoom, g_keyhook.centerx, g_keyhook.centery, g_keyhook.centerz, 0.0f, 0.5f, 0.0f);
 	//eye, center, up is in positive y direction.
 	glColor3f(g_red, g_blue, g_green);
 	glRotatef(g_angle, g_centerpoint.center.x, g_centerpoint.center.y, g_centerpoint.center.z);

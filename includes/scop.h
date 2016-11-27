@@ -6,7 +6,7 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 10:32:03 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/24 10:32:10 by khansman         ###   ########.fr       */
+/*   Updated: 2016/11/27 10:55:49 by smahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,16 @@
 
 typedef struct		s_keyhook
 {
-	float		zoom;
-	float		ratio;
-	char		wire;
-}			t_keyhook;
+	float			zoom;
+	float			ratio;
+	char			wire;
+	float			eyex;
+	float			eyey;
+	float			eyez;
+	float			centerx;
+	float			centery;
+	float			centerz;
+}					t_keyhook;
 
 typedef struct		s_vertex
 {
