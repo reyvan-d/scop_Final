@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 09:38:30 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/27 12:10:32 by ggroener         ###   ########.fr       */
+/*   Updated: 2016/11/27 16:18:22 by smahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ void			process_normal_keys(unsigned char key, int x, int y)
 	key == 'd' && (g_centerpoint.center.z -= .5);
 	if (key == 'f')
 		g_keyhook.wire = (g_keyhook.wire) ? 0 : 1;
+	if (key == 'b')
+		glutFullScreen();
 	process_normal_keys4(key);
 }

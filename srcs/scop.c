@@ -25,6 +25,8 @@ void	init_globals(void)
 int		main(int ac, char **av)
 {
 	read_obj(ac, av);
+	if (av[2] && !ft_strcmp(av[2], "-v"))
+		print_list(g_lst);
 	set_vertix_arr();
 	init_globals();
 	glutInit(&ac, av);
