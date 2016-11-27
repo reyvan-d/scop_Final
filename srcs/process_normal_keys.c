@@ -15,13 +15,13 @@
 static void		process_normal_keys_3(unsigned char key)
 {
 	if (key == '8' || key == '7' || key == '9')
-		g_keyhook.eyex += 0.3;
+		g_keyhook.eyex += 0.7;
 	if (key == '2' || key == '1' || key == '3')
-		g_keyhook.eyex -= 0.3;
+		g_keyhook.eyex -= 0.7;
 	if (key == '4' || key == '7' || key == '1')
-		g_keyhook.eyey += 0.3;
+		g_keyhook.eyey += 0.7;
 	if (key == '6' || key == '9' || key == '3')
-		g_keyhook.eyey -= 0.3;
+		g_keyhook.eyey -= 0.7;
 	if (key == 'n')
 		g_keyhook.eyez += 0.5;
 	if (key == 'm')
@@ -33,13 +33,13 @@ static void		process_normal_keys2(unsigned char key, int mod)
 	if (mod & GLUT_ACTIVE_CTRL)
 	{
 		if (key == '8' || key == '7' || key == '9')
-			g_keyhook.up_x += 0.3;
+			g_keyhook.up_x += 0.7;
 		if (key == '2' || key == '1' || key == '3')
-			g_keyhook.up_x -= 0.3;
+			g_keyhook.up_x -= 0.7;
 		if (key == '4' || key == '7' || key == '1')
-			g_keyhook.up_y += 0.3;
+			g_keyhook.up_y += 0.7;
 		if (key == '6' || key == '9' || key == '3')
-			g_keyhook.up_y -= 0.3;
+			g_keyhook.up_y -= 0.7;
 		if (key == 'n')
 			g_keyhook.up_z += 0.5;
 		if (key == 'm')
