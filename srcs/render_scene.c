@@ -50,35 +50,15 @@ void	render_vertex(void)
 **	glEnd();
 */
 
-void	draw_snowman()
+void	computePos(float g_delta_move)
 {
-	int	i;
-	int	j;
-
-	j = -3;
-	i = -3;
-	while (i < 3)
-	{
-		while (j < 3)
-		{
-			glPushMatrix();
-			glTranslatef(i * 10.0, 0, j * 10.0);
-			drawSnowMan();
-			glPopMatrix();
-		}
-	}
-	glutSwapBuffers();
+	g_x += g_delta_move * g_lx * 0.1f;
+	g_z += g_delta_move * g_lz * 0.1f;
 }
 
-void	computePos(float g_deltaMove)
+void	computeDir(float g_delta_angle)
 {
-	g_x += g_deltaMove * g_lx * 0.1f;
-	g_z += g_deltaMove * g_lz * 0.1f;
-}
-
-void	computeDir(float g_deltaAngle)
-{
-	g_angle += g_deltaAngle;
+	g_angle += g_delta_angle;
 	g_lx = sin(g_angle);
 	g_lz = -cos(g_angle);
 }
@@ -91,10 +71,10 @@ void	render_scene(void)
 	int			q = 0;
 	char		tmp;
 
-	if (g_deltaMove)
-		computePos(g_deltaMove);
-	if (g_deltaAngle)
-		computeDir(g_deltaAngle);
+	if (g_delta_move)
+		computePos(g_delta_move);
+	if (g_delta_angle)
+		computeDir(g_delta_angle);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Color and Depth Buffers
 	glLoadIdentity(); // Reset transformations
 	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
@@ -132,20 +112,11 @@ void	render_scene(void)
 		k = k->next;
 		q++;
 	}
-	/*glBegin(GL_QUADS);
-		glVertex3f(-100.0f, 0.0f, -100.0f);
-		glVertex3f(-100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f, -100.0f);
-	glEnd();
-	draw_snowman();
-	//glutSwapBuffers();*/
-//	render_vertex();
 	g_angle += 0.5f;
 	glutSwapBuffers();
 }
 
-void	initGL(void)
+void	init_gl(void)
 {
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);

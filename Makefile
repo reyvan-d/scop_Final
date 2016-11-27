@@ -28,6 +28,7 @@ SRCS_NAME = centerpoint.c				\
 			count_elements.c			\
 			error_quit.c				\
 			exit_prog.c					\
+			free_lst.c					\
 			ft_atof.c					\
 			ft_print_memory.c			\
 			matrix_add.c				\
@@ -41,7 +42,6 @@ SRCS_NAME = centerpoint.c				\
 			print_list.c				\
 			process_normal_keys.c 		\
 			process_special_keys.c 		\
-			free_lst.c					\
 			read_obj.c					\
 			render_scene.c 				\
 			set_arrays.c				\
@@ -51,7 +51,6 @@ SRCS_NAME = centerpoint.c				\
 			store_obj.c					\
 			trim.c						\
 			vertex_create.c				\
-			snowman.c					\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

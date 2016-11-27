@@ -24,11 +24,10 @@ void	process_special_keys(int key, int x, int y)
 	if (key == GLUT_KEY_F1)
 	{
 		set_colour(1.0, 0.0, 0.0);
-		if (mod == (GLUT_ACTIVE_CTRL|GLUT_ACTIVE_ALT))
+		if (mod == (GLUT_ACTIVE_CTRL | GLUT_ACTIVE_ALT))
 		{
 			set_colour(1.0, 0.0, 0.0);
 		}
-
 	}
 	else if (key == GLUT_KEY_F2)
 		set_colour(0.0, 1.0, 0.0);
@@ -58,51 +57,30 @@ void	process_special_keys(int key, int x, int y)
 	}
 }
 
-void pressKey(int key, int xx, int yy)
+void	press_key(int key, int xx, int yy)
 {
 	(void)xx;
 	(void)yy;
-	printf("key : %i\n",key);
 	if (key == GLUT_KEY_LEFT)
-		g_deltaAngle += -0.1f;
+		g_delta_angle += -0.1f;
 	else if (key == GLUT_KEY_RIGHT)
-		g_deltaAngle += 0.1f;
+		g_delta_angle += 0.1f;
 	else if (key == GLUT_KEY_UP)
-		g_deltaMove += 0.5f;
+		g_delta_move += 0.5f;
 	else if (key == GLUT_KEY_DOWN)
-		g_deltaMove += -0.5f;
+		g_delta_move += -0.5f;
 }
 
-void releaseKey(int key, int x, int y)
+void	release_key(int key, int x, int y)
 {
 	(void)x;
 	(void)y;
 	if (key == GLUT_KEY_LEFT)
-		g_deltaAngle += -0.1f;
+		g_delta_angle += -0.1f;
 	else if (key == GLUT_KEY_RIGHT)
-		g_deltaAngle += 0.1f;
+		g_delta_angle += 0.1f;
 	else if (key == GLUT_KEY_UP)
-		g_deltaMove += 0.5f;
+		g_delta_move += 0.5f;
 	else if (key == GLUT_KEY_DOWN)
-		g_deltaMove += -0.5f;
+		g_delta_move += -0.5f;
 }
-
-/*void pressKey(int key, int xx, int yy) {
-
-	switch (key) {
-		case GLUT_KEY_LEFT : g_deltaAngle = -0.01f; break;
-		case GLUT_KEY_RIGHT : g_deltaAngle = 0.01f; break;
-		case GLUT_KEY_UP : g_deltaMove = 0.5f; break;
-		case GLUT_KEY_DOWN : g_deltaMove = -0.5f; break;
-	}
-}
-
-void releaseKey(int key, int x, int y) {
-
-	switch (key) {
-		case GLUT_KEY_LEFT :
-		case GLUT_KEY_RIGHT : g_deltaAngle = 0.0f;break;
-		case GLUT_KEY_UP :
-		case GLUT_KEY_DOWN : g_deltaMove = 0;break;
-	}
-}*/

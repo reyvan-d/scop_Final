@@ -38,13 +38,8 @@ void	process_normal_keys(unsigned char key, int x, int y)
 		g_keyhook.wire = (g_keyhook.wire) ? 0 : 1;
     key == 'm' && (g_keyhook.zoom -= 1.0);
     key == 'n' && (g_keyhook.zoom += 1.0);
-	
 	key == '8' && (g_keyhook.centery -= .3);
 	key == '2' && (g_keyhook.centery += .3);
 	key == '4' && (g_keyhook.centerx += .3);
 	key == '6' && (g_keyhook.centerx -= .3);
-	
-	
-	
-	//printf("%d\n", key);
 }
