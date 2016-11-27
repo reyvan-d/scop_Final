@@ -15,7 +15,7 @@ NAME = scop
 CFLAGS =	-Wno-deprecated-declarations -Wall -Wextra -Werror -g -Ofast
 
 CFLAGS2 =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
-			-g -Ofast
+			-g -Ofast -ltermcap
 
 CC = gcc
 

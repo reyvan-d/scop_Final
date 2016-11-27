@@ -363,6 +363,12 @@ void				store_normal(char *line, t_list **pos);
 void				store_texture(char *line, t_list **pos);
 void				store_pspace(char *line, t_list **pos);
 /*
+** term.c
+*/
+int					cursor_do(int to_print);
+void				unexpected_error(int signo);
+void				listener(void);
+/*
 ** trim.c
 */
 char				*trim_start(char *str);
