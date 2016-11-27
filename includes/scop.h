@@ -30,7 +30,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-//# include <libc.h>
+# include <libc.h>
 
 # include "../libft/includes/libft.h"
 
@@ -86,7 +86,7 @@ typedef struct		s_keyhook
 	float		zoom;
 	float		ratio;
 	char		wire;
-}			t_keyhook;
+}					t_keyhook;
 
 typedef struct		s_vertex
 {
@@ -95,26 +95,39 @@ typedef struct		s_vertex
 	float		y;
 	float		z;
 	float		w;
-}			t_vertex;
+}					t_vertex;
 
 typedef struct		s_centerpoint
 {
 	t_vertex	min;
 	t_vertex	max;
 	t_vertex	center;
-}			t_centerpoint;
+}					t_centerpoint;
 
-typedef struct			s_vertex2
+typedef struct		s_vertex2
 {
 	char			type;
 	float			u;
 	float			v;
 	float			w;
-}				t_vertex2;
+}					t_vertex2;
+
+typedef struct		s_camera
+{
+	float			eye_x;
+	float			eye_y;
+	float			eye_z;
+	float			center_x;
+	float			center_y;
+	float			center_z;
+	float			up_x;
+	float			up_y;
+	float			up_z;
+}					t_camera;
 
 typedef struct		s_face
 {
-	char		type;
+	char	type;
 	int		x;
 	int		y;
 	int		z;
@@ -139,24 +152,24 @@ typedef struct		s_face
 	int		n_v;
 	int		n_o;
 	int		n_p;
-	char		set;
-}			t_face;
+	char	set;
+}					t_face;
 
 typedef struct		s_matrix
 {
 	unsigned int	x;
 	unsigned int	y;
-	int		**matrix;
-}			t_matrix;
+	int				**matrix;
+}					t_matrix;
 
 typedef struct		s_mat_mul
 {
 	unsigned int	c;
 	unsigned int	d;
 	unsigned int	k;
-	int		sum;
+	int				sum;
 	struct s_matrix	multiply;
-}			t_mat_mul;
+}					t_mat_mul;
 
 /*
 ** ----------\
@@ -178,11 +191,12 @@ float				g_delta_angle = 0.0f;
 float				g_delta_move = 0;
 t_list				*g_lst = NULL;
 t_vertex			**g_vertecies = NULL;
-int				g_num_vertex = 0;
+int					g_num_vertex = 0;
 t_vertex			*g_normals = NULL;
 char				*g_mtl_file = NULL;
-t_centerpoint			g_centerpoint;
+t_centerpoint		g_centerpoint;
 t_keyhook			g_keyhook;
+t_camera			camera;
 # else
 
 extern float		g_red;
@@ -197,11 +211,12 @@ extern float		g_delta_angle;
 extern float		g_delta_move;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
-extern int		g_num_vertex;
+extern int			g_num_vertex;
 extern t_vertex		*g_normals;
-extern char		*g_mtl_file;
+extern char			*g_mtl_file;
 extern t_centerpoint	g_centerpoint;
 extern t_keyhook	g_keyhook;
+extern t_camera		g_camera;
 # endif
 
 /*
@@ -282,7 +297,7 @@ t_matrix			matrix_transpose(t_matrix source);
 ** normalise.c
 */
 void				normalise(void);
-t_vertex    			normalise_point(t_vertex *p1, t_vertex *p2, t_vertex *p3);
+t_vertex			normalise_point(t_vertex *p1, t_vertex *p2, t_vertex *p3);
 /*
 ** print_list.c
 */
@@ -308,7 +323,7 @@ int					read_obj(int ac, char **av);
 ** render_scene.c
 */
 void				render_scene(void);
-void				initGL(void);
+void				init_gl(void);
 /*
 ** set_arrays.c
 */

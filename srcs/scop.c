@@ -29,7 +29,7 @@ int		main(int ac, char **av)
 	glutDisplayFunc(render_scene);
 	glutReshapeFunc(change_size);
 	glutIdleFunc(render_scene);
-	initGL();
+	init_gl();
 	glutKeyboardFunc(process_normal_keys);
 	glutSpecialFunc(process_special_keys);
 	glutSpecialFunc(press_key);

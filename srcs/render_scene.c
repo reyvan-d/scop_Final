@@ -116,7 +116,7 @@ void	render_scene(void)
 	glutSwapBuffers();
 }
 
-void	initGL(void)
+void	init_gl(void)
 {
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
