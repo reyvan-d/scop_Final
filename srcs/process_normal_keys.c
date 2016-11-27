@@ -28,4 +28,10 @@ void	process_normal_keys(unsigned char key, int x, int y)
 		else
 			g_red = 1.0;
 	}
+	key == 'a' && (g_centerpoint.center.x += 1.0);
+	key == 'q' && (g_centerpoint.center.x -= 1.0);
+	key == 'w' && (g_centerpoint.center.y += 1.0);
+	key == 's' && (g_centerpoint.center.y -= 1.0);
+	key == 'e' && (g_centerpoint.center.z += 1.0);
+	key == 'd' && (g_centerpoint.center.z -= 1.0);
 }

@@ -81,54 +81,66 @@
 ** ----------/
 */
 
+typedef struct		s_keyhook
+{
+	
+}			t_keyhook;
+
 typedef struct		s_vertex
 {
-	char			type;
-	float			x;
-	float			y;
-	float			z;
-	float			w;
-}					t_vertex;
+	char		type;
+	float		x;
+	float		y;
+	float		z;
+	float		w;
+}			t_vertex;
 
-typedef struct		s_vertex2
+typedef struct		s_centerpoint
+{
+	t_vertex	min;
+	t_vertex	max;
+	t_vertex	center;
+}			t_centerpoint;
+
+typedef struct			s_vertex2
 {
 	char			type;
 	float			u;
 	float			v;
 	float			w;
-}					t_vertex2;
+}				t_vertex2;
 
 typedef struct		s_face
 {
-	char			type;
-	int				x;
-	int				y;
-	int				z;
-	int				w;
-	int				t_x;
-	int				t_y;
-	int				t_z;
-	int				n_x;
-	int				n_y;
-	int				n_z;
-	char			set;
-}					t_face;
+	char		type;
+	int		x;
+	int		y;
+	int		z;
+	int		w;
+	int		t_x;
+	int		t_y;
+	int		t_z;
+	int		n_x;
+	int		n_y;
+	int		n_z;
+	char		set;
+}			t_face;
 
 typedef struct		s_matrix
 {
 	unsigned int	x;
 	unsigned int	y;
-	int				**matrix;
-}					t_matrix;
+	int		**matrix;
+}			t_matrix;
 
 typedef struct		s_mat_mul
 {
 	unsigned int	c;
 	unsigned int	d;
 	unsigned int	k;
-	int				sum;
+	int		sum;
 	struct s_matrix	multiply;
-}					t_mat_mul;
+}			t_mat_mul;
 
 /*
 ** ----------\
@@ -150,9 +162,10 @@ float				g_deltaAngle = 0.0f;
 float				g_deltaMove = 0;
 t_list				*g_lst = NULL;
 t_vertex			**g_vertecies = NULL;
-int					g_num_vertex = 0;
+int				g_num_vertex = 0;
 t_vertex			*g_normals = NULL;
 char				*g_mtl_file = NULL;
+t_centerpoint			g_centerpoint;
 # else
 
 extern float		g_red;
@@ -167,9 +180,10 @@ extern float		g_deltaAngle;
 extern float		g_deltaMove;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
-extern int			g_num_vertex;
+extern int		g_num_vertex;
 extern t_vertex		*g_normals;
-extern char			*g_mtl_file;
+extern char		*g_mtl_file;
+extern t_centerpoint	g_centerpoint;
 # endif
 
 /*
@@ -177,7 +191,11 @@ extern char			*g_mtl_file;
 ** Prototypes |
 ** ----------/
 */
-void	initGL(void);
+
+/*
+** centerpoint.c
+*/
+void				centerpoint(void);
 /*
 ** change_size.c
 */
@@ -272,6 +290,7 @@ int					read_obj(int ac, char **av);
 ** render_scene.c
 */
 void				render_scene(void);
+void				initGL(void);
 /*
 ** set_arrays.c
 */
