@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_normal_keys.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 09:38:30 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/27 12:10:32 by khansman         ###   ########.fr       */
+/*   Created: 2016/11/25 09:38:30 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/27 12:10:32 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void		process_normal_keys2(unsigned char key, int mod)
 		if (key == '6' || key == '9' || key == '3')
 			g_keyhook.up_y -= 0.3;
 	}
-	else 
+	else
 		process_normal_keys_3(key);
 }
 

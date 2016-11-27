@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 09:39:22 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/27 11:59:44 by khansman         ###   ########.fr       */
+/*   Created: 2016/11/25 09:39:22 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/27 11:59:44 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	render_scene(void)
 	glLoadIdentity();
 	gluLookAt(g_keyhook.eyex, g_keyhook.eyey, g_keyhook.zoom,
 		g_keyhook.centerx, g_keyhook.centery, g_keyhook.centerz,
-		g_keyhook.up_x,g_keyhook.up_y, g_keyhook.up_z);
+		g_keyhook.up_x, g_keyhook.up_y, g_keyhook.up_z);
 	glColor3f(g_red, g_blue, g_green);
 	glRotatef(g_angle, g_centerpoint.center.x,
 		g_centerpoint.center.y, g_centerpoint.center.z);
