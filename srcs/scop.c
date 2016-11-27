@@ -30,15 +30,13 @@ int		main(int ac, char **av)
 	glutDisplayFunc(render_scene);
 	glutReshapeFunc(change_size);
 	glutIdleFunc(render_scene);
-	initGL();	
+	initGL();
 	glutKeyboardFunc(process_normal_keys);
 	glutSpecialFunc(process_special_keys);
-	glutSpecialFunc(pressKey);
+	glutSpecialFunc(press_key);
 	glutIgnoreKeyRepeat(1);
-	glutSpecialUpFunc(releaseKey);
+	glutSpecialUpFunc(release_key);
 	glEnable(GL_DEPTH_TEST);// added for snow men
-	//mlx_hook(env.window->mlx_window, 17, 0L, &close_window, &env);
-	//glutWMCloseFunc(); use for closing window with click event
 	glutMainLoop();
 	return (1);
 }

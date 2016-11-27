@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   centerpoint.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/27 10:07:05 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/27 10:07:09 by ggroener         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/scop.h"
 
 void	centerpoint(void)
@@ -29,10 +41,12 @@ void	centerpoint(void)
 						g_centerpoint.max.x = t->x;
 					if (t->y < g_centerpoint.min.y)
 						g_centerpoint.min.y = t->y;
-					else if (t->y > g_centerpoint.max.y) 							g_centerpoint.max.y = t->y;
+					else if (t->y > g_centerpoint.max.y)
+						g_centerpoint.max.y = t->y;
 					if (t->z < g_centerpoint.min.z)
 						g_centerpoint.min.z = t->z;
-					else if (t->z > g_centerpoint.max.z)							g_centerpoint.max.z = t->z;
+					else if (t->z > g_centerpoint.max.z)
+						g_centerpoint.max.z = t->z;
 				}
 			}
 		}

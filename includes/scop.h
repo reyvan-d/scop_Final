@@ -162,8 +162,8 @@ float				g_lx = 0.0f;
 float				g_lz = -1.0f;
 float				g_x = 0.0f;
 float				g_z = 5.0f;
-float				g_deltaAngle = 0.0f;
-float				g_deltaMove = 0;
+float				g_delta_angle = 0.0f;
+float				g_delta_move = 0;
 t_list				*g_lst = NULL;
 t_vertex			**g_vertecies = NULL;
 int				g_num_vertex = 0;
@@ -181,8 +181,8 @@ extern float		g_lx;
 extern float		g_lz;
 extern float		g_x;
 extern float		g_z;
-extern float		g_deltaAngle;
-extern float		g_deltaMove;
+extern float		g_delta_angle;
+extern float		g_delta_move;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
 extern int		g_num_vertex;
@@ -286,8 +286,8 @@ void				process_normal_keys(unsigned char key, int x, int y);
 ** process_special_keys.c
 */
 void				process_special_keys(int key, int x, int y);
-void				pressKey(int key, int xx, int yy);
-void				releaseKey(int key, int x, int y);
+void				press_key(int key, int xx, int yy);
+void				release_key(int key, int x, int y);
 /*
 ** read_obj.c
 */
@@ -328,12 +328,6 @@ void				trim_str(char *str);
 ** vertex_create.c
 */
 t_vertex			vertex_create(float x, float y, float z, float w);
-
-
-/*
-** snowman.c
-*/
-void				drawSnowMan();
 
 /*
 **                                /----------\                                **
