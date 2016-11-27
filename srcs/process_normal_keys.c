@@ -34,4 +34,6 @@ void	process_normal_keys(unsigned char key, int x, int y)
 	key == 's' && (g_centerpoint.center.y -= 1.0);
 	key == 'e' && (g_centerpoint.center.z += 1.0);
 	key == 'd' && (g_centerpoint.center.z -= 1.0);
+	if (key == 'f')
+		g_keyhook.wire = (g_keyhook.wire) ? 0 : 1;
 }

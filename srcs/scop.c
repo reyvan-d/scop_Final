@@ -18,6 +18,7 @@ int		main(int ac, char **av)
 	read_obj(ac, av);//incomplete
 	print_list(g_lst);//debug
 	set_vertix_arr();
+	g_keyhook.wire = 1;
 	centerpoint();
 	glutInit(&ac, av);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);

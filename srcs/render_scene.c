@@ -110,7 +110,7 @@ void	render_scene(void)
 		if (tmp == TYPE_FACE)
 		{
 			face = (t_face *)k->content;
-			glBegin(GL_TRIANGLES);
+			glBegin((g_keyhook.wire) ? GL_TRIANGLES : GL_LINES);
 			normal = normalise_point(g_vertecies[face->x - 1], g_vertecies[face->y - 1], g_vertecies[face->z - 1]);
 			glNormal3f(normal.x, normal.y, normal.z);
 			glVertex3f(g_vertecies[face->x - 1]->x, g_vertecies[face->x - 1]->y, g_vertecies[face->x - 1]->z);
