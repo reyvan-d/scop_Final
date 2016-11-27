@@ -6,37 +6,57 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 09:39:22 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/27 10:57:58 by smahomed         ###   ########.fr       */
+/*   Updated: 2016/11/27 11:59:44 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
-GLfloat light_diffuse[] = {6.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */
-GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};  /* Infinite light location. */
+/*
+** RED Diffused light, and infinite light location.
+*/
+
+GLfloat g_light_diffuse[] = L_DIFF;
+GLfloat g_light_position[] = LIGHT_POS;
+
+void	set_normal(t_face *face)
+{
+	normalise_point(VER2(x), VER2(y), VER2(z));
+	glVertex3f(VER(x, x), VER(x, y), VER(x, z));
+	glVertex3f(VER(y, x), VER(y, y), VER(y, z));
+	glVertex3f(VER(z, x), VER(z, y), VER(z, z));
+	if (face->w)
+		glVertex3f(VER(w, x), VER(w, y), VER(w, z));
+	if (face->w && face->u)
+		glVertex3f(VER(u, x), VER(u, y), VER(u, z));
+	if (face->w && face->u && face->v)
+		glVertex3f(VER(v, x), VER(v, y), VER(v, z));
+	if (face->w && face->u && face->v && face->o)
+		glVertex3f(VER(o, x), VER(o, y), VER(o, z));
+	if (face->w && face->u && face->v && face->o && face->p)
+		glVertex3f(VER(p, x), VER(p, y), VER(p, z));
+}
 
 void	render_vertex(void)
 {
-	t_list			*list;
-	t_vertex		*ver;
-	char			type;
-	unsigned int	k;
+	t_list		*k;
+	t_face		*face;
+	char		tmp;
 
-	list = g_lst;
-	glBegin(GL_POLYGON);
-	k = 0;
-	while (list && (++k + 1))
+	k = g_lst;
+	while (k != NULL)
 	{
-		ft_memcpy(&type, list->content, 1);
-		if (type == TYPE_VERTEX)
+		if (k->content)
+			ft_memcpy(&tmp, k->content, 1);
+		if (tmp == TYPE_FACE)
 		{
-			glColor3f(((k) % 3), ((k + 1) % 3), ((k + 2) % 3));
-			ver = (t_vertex *)list->content;
-			glVertex4f(ver->x, ver->y, ver->z, ver->w);
+			face = (t_face *)k->content;
+			glBegin((g_keyhook.wire) ? REN_TYPE : GL_LINES);
+			set_normal(face);
+			glEnd();
 		}
-		list = list->next;
+		k = k->next;
 	}
-	glEnd();
 }
 
 /*
@@ -50,79 +70,32 @@ void	render_vertex(void)
 **	glEnd();
 */
 
-void	computePos(float g_delta_move)
-{
-	g_x += g_delta_move * g_lx * 0.1f;
-	g_z += g_delta_move * g_lz * 0.1f;
-}
-
-void	computeDir(float g_delta_angle)
-{
-	g_angle += g_delta_angle;
-	g_lx = sin(g_angle);
-	g_lz = -cos(g_angle);
-}
-
 void	render_scene(void)
 {
-	t_list		*k;
-	t_face		*face;
-	t_vertex	normal;
-	int			q = 0;
-	char		tmp;
-
 	if (g_delta_move)
-		computePos(g_delta_move);
+		compute_pos(g_delta_move);
 	if (g_delta_angle)
-		computeDir(g_delta_angle);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Color and Depth Buffers
-	glLoadIdentity(); // Reset transformations
-	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
-//	gluPerspective(g_keyhook.zoom, g_keyhook.ratio, 0.1f, 100.0f);
-	gluLookAt(g_keyhook.eyex, g_keyhook.eyey, g_keyhook.zoom, g_keyhook.centerx, g_keyhook.centery, g_keyhook.centerz, 0.0f, 0.5f, 0.0f);
-	//eye, center, up is in positive y direction.
+		compute_dir(g_delta_angle);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	gluLookAt(g_keyhook.eyex, g_keyhook.eyey, g_keyhook.zoom,
+		g_keyhook.centerx, g_keyhook.centery, g_keyhook.centerz,
+		0.0f, 0.5f, 0.0f);
 	glColor3f(g_red, g_blue, g_green);
-	glRotatef(g_angle, g_centerpoint.center.x, g_centerpoint.center.y, g_centerpoint.center.z);
-	k = g_lst;
-	while (k != NULL)
-	{
-		if (k->content)
-			ft_memcpy(&tmp, k->content, 1);
-		if (tmp == TYPE_FACE)
-		{
-			face = (t_face *)k->content;
-			glBegin((g_keyhook.wire) ? ((face->w) ? ((face->u) ? GL_POLYGON : GL_QUADS) : GL_TRIANGLES) : GL_LINES);
-			normal = normalise_point(g_vertecies[face->x - 1], g_vertecies[face->y - 1], g_vertecies[face->z - 1]);
-			glNormal3f(normal.x, normal.y, normal.z);
-			glVertex3f(g_vertecies[face->x - 1]->x, g_vertecies[face->x - 1]->y, g_vertecies[face->x - 1]->z);
-			glVertex3f(g_vertecies[face->y - 1]->x, g_vertecies[face->y - 1]->y, g_vertecies[face->y - 1]->z);
-			glVertex3f(g_vertecies[face->z - 1]->x, g_vertecies[face->z - 1]->y, g_vertecies[face->z - 1]->z);
-			if (face->w)
-				glVertex3f(g_vertecies[face->w - 1]->x, g_vertecies[face->w - 1]->y, g_vertecies[face->w - 1]->z);
-			if (face->w && face->u)
-				glVertex3f(g_vertecies[face->u - 1]->x, g_vertecies[face->u - 1]->y, g_vertecies[face->u - 1]->z);
-			if (face->w && face->u && face->v)
-				glVertex3f(g_vertecies[face->v - 1]->x, g_vertecies[face->v - 1]->y, g_vertecies[face->v - 1]->z);
-			if (face->w && face->u && face->v && face->o)
-				glVertex3f(g_vertecies[face->o - 1]->x, g_vertecies[face->o - 1]->y, g_vertecies[face->o - 1]->z);
-			if (face->w && face->u && face->v && face->o && face->p)
-				glVertex3f(g_vertecies[face->p - 1]->x, g_vertecies[face->p - 1]->y, g_vertecies[face->p - 1]->z);
-			glEnd();
-		}
-		k = k->next;
-		q++;
-	}
+	glRotatef(g_angle, g_centerpoint.center.x,
+		g_centerpoint.center.y, g_centerpoint.center.z);
+	render_vertex();
 	g_angle += 0.5f;
 	glutSwapBuffers();
 }
 
 void	init_gl(void)
 {
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, g_light_diffuse);
+	glLightfv(GL_LIGHT0, GL_POSITION, g_light_position);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
-	glEnable(GL_DEPTH_TEST);  /* Use depth buffering for hidden surface elimination. */
-	glMatrixMode(GL_PROJECTION);  /* Setup the view of the cube. */
+	glEnable(GL_DEPTH_TEST);
+	glMatrixMode(GL_PROJECTION);
 	glMatrixMode(GL_MODELVIEW);
 }

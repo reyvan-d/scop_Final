@@ -12,28 +12,9 @@
 
 #include "../includes/scop.h"
 
-void	process_special_keys(int key, int x, int y)
+void	process_special_keys2(int key, float fraction)
 {
-	static int		mod;
-	static float	fraction;
-
-	fraction = 0.1f;
-	mod = glutGetModifiers();
-	(void)x;
-	(void)y;
-	if (key == GLUT_KEY_F1)
-	{
-		set_colour(1.0, 0.0, 0.0);
-		if (mod == (GLUT_ACTIVE_CTRL | GLUT_ACTIVE_ALT))
-		{
-			set_colour(1.0, 0.0, 0.0);
-		}
-	}
-	else if (key == GLUT_KEY_F2)
-		set_colour(0.0, 1.0, 0.0);
-	else if (key == GLUT_KEY_F3)
-		set_colour(0.0, 0.0, 1.0);
-	else if (key == GLUT_KEY_LEFT)
+	if (key == GLUT_KEY_LEFT)
 	{
 		g_angle -= 0.01f;
 		g_lx = sin(g_angle);
@@ -55,6 +36,31 @@ void	process_special_keys(int key, int x, int y)
 		g_x -= g_lx * fraction;
 		g_z -= g_lz * fraction;
 	}
+}
+
+void	process_special_keys(int key, int x, int y)
+{
+	static int		mod;
+	static float	fraction;
+
+	fraction = 0.1f;
+	mod = glutGetModifiers();
+	(void)x;
+	(void)y;
+	if (key == GLUT_KEY_F1)
+	{
+		set_colour(1.0, 0.0, 0.0);
+		if (mod == (GLUT_ACTIVE_CTRL | GLUT_ACTIVE_ALT))
+		{
+			set_colour(1.0, 0.0, 0.0);
+		}
+	}
+	else if (key == GLUT_KEY_F2)
+		set_colour(0.0, 1.0, 0.0);
+	else if (key == GLUT_KEY_F3)
+		set_colour(0.0, 0.0, 1.0);
+	else
+		process_special_keys2(key, fraction);
 }
 
 void	press_key(int key, int xx, int yy)

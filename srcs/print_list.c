@@ -19,7 +19,7 @@
 void	print_vetex(t_vertex *vertex)
 {
 	printf("\tTYPE:\t%s\n", (vertex->type == TYPE_VERTEX) ?
-		"vertex" : (vertex->type == TYPE_NORMAL) ? "normal" : "unknown");
+		P_VERTEX : "unknown");
 	printf("\tX:\t%f\n", vertex->x);
 	printf("\tY:\t%f\n", vertex->y);
 	printf("\tZ:\t%f\n", vertex->z);
@@ -28,8 +28,8 @@ void	print_vetex(t_vertex *vertex)
 
 void	print_vertex2(t_vertex2 *vertex)
 {
-	printf("\tTYPE:\t%s\n", (vertex->type == TYPE_TEXTURE) ? "texture" :
-		(vertex->type == TYPE_PSPACE) ? "parameter space" : "unknown");
+	printf("\tTYPE:\t%s\n", (vertex->type == TYPE_TEXTURE) ? P_VERTEX2
+		: "unknown");
 	printf("\tU:\t%f\n", vertex->u);
 	printf("\tV:\t%f\n", vertex->v);
 	printf("\tW:\t%f\n", vertex->w);

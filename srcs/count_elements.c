@@ -12,6 +12,19 @@
 
 #include "../includes/scop.h"
 
+void	compute_pos(float g_delta_move)
+{
+	g_x += g_delta_move * g_lx * 0.1f;
+	g_z += g_delta_move * g_lz * 0.1f;
+}
+
+void	compute_dir(float g_delta_angle)
+{
+	g_angle += g_delta_angle;
+	g_lx = sin(g_angle);
+	g_lz = -cos(g_angle);
+}
+
 int		count_elements(char type)
 {
 	int		k;

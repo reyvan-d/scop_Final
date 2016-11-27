@@ -75,6 +75,17 @@
 */
 # define BASE_STR2 char *base = "0123456789abcdef";
 
+# define L_DIFF    {6.0, 0.0, 0.0, 1.0}
+# define LIGHT_POS {1.0, 1.0, 1.0, 0.0}
+# define REN_LARGE (face->w) ? ((face->u) ? GL_POLYGON : GL_QUADS)
+# define REN_TYPE  (REN_LARGE : GL_TRIANGLES)
+
+# define VER(X, Y)  g_vertecies[face->X - 1]->Y
+# define VER2(X)    g_vertecies[face->X - 1]
+# define P_VERTEX   "vertex" : (vertex->type == TYPE_NORMAL) ? "normal"
+# define P_VERTEX2  "texture" : (vertex->type == TYPE_PSPACE) ? "param space"
+# define S_F_P2     else store_f_piece2
+
 /*
 ** ----------\
 ** Structures |
@@ -202,7 +213,7 @@ t_vertex			*g_normals = NULL;
 char				*g_mtl_file = NULL;
 t_centerpoint		g_centerpoint;
 t_keyhook			g_keyhook;
-t_camera			camera;
+t_camera			g_camera;
 # else
 
 extern float		g_red;
@@ -242,6 +253,8 @@ void				change_size(int w, int h);
 /*
 ** count_elements.c
 */
+void				compute_pos(float g_delta_move);
+void				compute_dir(float g_delta_angle);
 int					count_elements(char type);
 /*
 ** exit_prog.c

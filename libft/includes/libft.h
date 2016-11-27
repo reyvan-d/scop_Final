@@ -16,7 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-//# include <libc.h>
+# include <libc.h>
 # include <sys/uio.h>
 # include <fcntl.h>
 

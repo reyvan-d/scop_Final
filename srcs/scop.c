@@ -13,19 +13,23 @@
 #define MAIN_FILE
 #include "../includes/scop.h"
 
-int		main(int ac, char **av)
+void	init_globals(void)
 {
 	g_keyhook.zoom = 10.0f;
-	read_obj(ac, av);//incomplete
-	set_vertix_arr();
 	g_keyhook.wire = 1;
 	g_keyhook.eyex = 0.0f;
 	g_keyhook.eyey = 0.0f;
 	g_keyhook.centerx = 0.0f;
 	g_keyhook.centery = 0.0f;
 	g_keyhook.centerz = 0.0f;
-	//	g_keyhook.ratio = 720.0 * 1.0 / 720.0;
 	centerpoint();
+}
+
+int		main(int ac, char **av)
+{
+	read_obj(ac, av);
+	set_vertix_arr();
+	init_globals();
 	glutInit(&ac, av);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowPosition(200, 200);
@@ -38,9 +42,8 @@ int		main(int ac, char **av)
 	glutKeyboardFunc(process_normal_keys);
 	glutSpecialFunc(process_special_keys);
 	glutSpecialFunc(press_key);
-	//glutIgnoreKeyRepeat(1);
 	glutSpecialUpFunc(release_key);
-	glEnable(GL_DEPTH_TEST);// added for snow men
+	glEnable(GL_DEPTH_TEST);
 	glutMainLoop();
 	return (1);
 }
