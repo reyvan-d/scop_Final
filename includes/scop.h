@@ -223,6 +223,7 @@ t_centerpoint		g_centerpoint;
 t_keyhook			g_keyhook;
 t_camera			g_camera;
 int					g_xorigin = -1;
+int					g_yorigin = -1;
 # else
 
 extern float		g_red;
@@ -244,6 +245,7 @@ extern t_centerpoint	g_centerpoint;
 extern t_keyhook	g_keyhook;
 extern t_camera		g_camera;
 extern int			g_xorigin;
+extern int			g_yorigin;
 # endif
 
 /*
