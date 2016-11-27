@@ -22,6 +22,10 @@ static void		process_normal_keys_3(unsigned char key)
 		g_keyhook.eyey += 0.3;
 	if (key == '6' || key == '9' || key == '3')
 		g_keyhook.eyey -= 0.3;
+	if (key == 'n')
+		g_keyhook.eyez += 0.5;
+	if (key == 'm')
+		g_keyhook.eyez -= 0.5;
 }
 
 static void		process_normal_keys2(unsigned char key, int mod)
@@ -36,9 +40,23 @@ static void		process_normal_keys2(unsigned char key, int mod)
 			g_keyhook.up_y += 0.3;
 		if (key == '6' || key == '9' || key == '3')
 			g_keyhook.up_y -= 0.3;
+		if (key == 'n')
+			g_keyhook.up_z += 0.5;
+		if (key == 'm')
+			g_keyhook.up_z -= 0.5;
 	}
-	else 
+	else
 		process_normal_keys_3(key);
+}
+
+static void		process_normal_keys4(unsigned char key)
+{
+	key == 'm' && (g_keyhook.zoom -= 1.0);
+	key == 'n' && (g_keyhook.zoom += 1.0);
+	(key == '8' || key == '7' || key == '9') && (g_keyhook.centery -= .3);
+	(key == '2' || key == '1' || key == '3') && (g_keyhook.centery += .3);
+	(key == '4' || key == '1' || key == '7') && (g_keyhook.centerx += .3);
+	(key == '6' || key == '9' || key == '3') && (g_keyhook.centerx -= .3);
 }
 
 void			process_normal_keys(unsigned char key, int x, int y)
@@ -65,10 +83,5 @@ void			process_normal_keys(unsigned char key, int x, int y)
 	key == 'd' && (g_centerpoint.center.z -= .5);
 	if (key == 'f')
 		g_keyhook.wire = (g_keyhook.wire) ? 0 : 1;
-	key == 'm' && (g_keyhook.zoom -= 1.0);
-	key == 'n' && (g_keyhook.zoom += 1.0);
-	(key == '8' || key == '7' || key == '9') && (g_keyhook.centery -= .3);
-	(key == '2' || key == '1' || key == '3') && (g_keyhook.centery += .3);
-	(key == '4' || key == '1' || key == '7') && (g_keyhook.centerx += .3);
-	(key == '6' || key == '9' || key == '3') && (g_keyhook.centerx -= .3);
+	process_normal_keys4(key);
 }
