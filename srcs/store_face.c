@@ -61,6 +61,31 @@ static void	store_f_piece(t_face *face, char pos, char type, int num)
 		face->t_w = num;
 	else if (pos == 4 && type == 3)
 		face->n_w = num;
+	else if (pos == 5 && type == 1)
+		face->u = num;
+	else if (pos == 5 && type == 2)
+		face->t_u = num;
+	else if (pos == 5 && type == 3)
+		face->n_u = num;
+	else if (pos == 6 && type == 1)
+		face->v = num;
+	else if (pos == 6 && type == 2)
+		face->t_v = num;
+	else if (pos == 6 && type == 3)
+		face->n_v = num;
+	else if (pos == 7 && type == 1)
+		face->o = num;
+	else if (pos == 7 && type == 2)
+		face->t_o = num;
+	else if (pos == 7 && type == 3)
+		face->n_o = num;
+	else if (pos == 8 && type == 1)
+		face->p = num;
+	else if (pos == 8 && type == 2)
+		face->t_p = num;
+	else if (pos == 8 && type == 3)
+		face->n_p = num;
+	
 }
 
 static void	store_f_part(t_face *face, char *part, char pos)
@@ -101,8 +126,12 @@ void		store_face(char *line, t_list **pos)
 	store_f_part(&face, parts[3], 3);
 	if (parts[4] != NULL)
 		store_f_part(&face, parts[4], 4);
-	else
-		face.w = 0;
+	if (parts[4] != NULL && parts[5] != NULL)
+		store_f_part(&face, parts[5], 5);
+	if (parts[4] != NULL && parts[5] != NULL && parts[6] != NULL)
+		store_f_part(&face, parts[6], 6);
+	if (parts[4] != NULL && parts[5] != NULL && parts[6] != NULL && parts[7] != NULL)
+		store_f_part(&face, parts[7], 7);
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&face, sizeof(t_face), pos);
 }

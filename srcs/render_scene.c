@@ -91,7 +91,7 @@ void	render_scene(void)
 		if (tmp == TYPE_FACE)
 		{
 			face = (t_face *)k->content;
-			glBegin((g_keyhook.wire) ? ((face->w) ? GL_QUADS : GL_TRIANGLES) : GL_LINES);
+			glBegin((g_keyhook.wire) ? ((face->w) ? ((face->u) ? GL_POLYGON : GL_QUADS) : GL_TRIANGLES) : GL_LINES);
 			normal = normalise_point(g_vertecies[face->x - 1], g_vertecies[face->y - 1], g_vertecies[face->z - 1]);
 			glNormal3f(normal.x, normal.y, normal.z);
 			glVertex3f(g_vertecies[face->x - 1]->x, g_vertecies[face->x - 1]->y, g_vertecies[face->x - 1]->z);
@@ -99,6 +99,14 @@ void	render_scene(void)
 			glVertex3f(g_vertecies[face->z - 1]->x, g_vertecies[face->z - 1]->y, g_vertecies[face->z - 1]->z);
 			if (face->w)
 				glVertex3f(g_vertecies[face->w - 1]->x, g_vertecies[face->w - 1]->y, g_vertecies[face->w - 1]->z);
+			if (face->w && face->u)
+				glVertex3f(g_vertecies[face->u - 1]->x, g_vertecies[face->u - 1]->y, g_vertecies[face->u - 1]->z);
+			if (face->w && face->u && face->v)
+				glVertex3f(g_vertecies[face->v - 1]->x, g_vertecies[face->v - 1]->y, g_vertecies[face->v - 1]->z);
+			if (face->w && face->u && face->v && face->o)
+				glVertex3f(g_vertecies[face->o - 1]->x, g_vertecies[face->o - 1]->y, g_vertecies[face->o - 1]->z);
+			if (face->w && face->u && face->v && face->o && face->p)
+				glVertex3f(g_vertecies[face->p - 1]->x, g_vertecies[face->p - 1]->y, g_vertecies[face->p - 1]->z);
 			glEnd();
 		}
 		k = k->next;

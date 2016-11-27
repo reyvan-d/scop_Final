@@ -17,7 +17,6 @@ int		main(int ac, char **av)
 {
 	g_keyhook.zoom = 10.0f;
 	read_obj(ac, av);//incomplete
-	print_list(g_lst);//debug
 	set_vertix_arr();
 	g_keyhook.wire = 1;
 //	g_keyhook.ratio = 720.0 * 1.0 / 720.0;
@@ -34,7 +33,7 @@ int		main(int ac, char **av)
 	glutKeyboardFunc(process_normal_keys);
 	glutSpecialFunc(process_special_keys);
 	glutSpecialFunc(press_key);
-	glutIgnoreKeyRepeat(1);
+	//glutIgnoreKeyRepeat(1);
 	glutSpecialUpFunc(release_key);
 	glEnable(GL_DEPTH_TEST);// added for snow men
 	glutMainLoop();
